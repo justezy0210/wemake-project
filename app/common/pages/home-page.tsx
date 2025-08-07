@@ -1,6 +1,7 @@
 import { Link, type MetaFunction } from 'react-router';
 import { ProductCard } from '~/features/products/components/product-card';
 import { IdeaCard } from '~/features/ideas/components/idea-card';
+import { PostCard } from '~/features/community/components/post-card';
 import { Button } from '../components/ui/button';
 
 export const meta: MetaFunction = () => {
@@ -12,7 +13,7 @@ export const meta: MetaFunction = () => {
 
 export default function HomePage() {
   return (
-    <div className="px-20">
+    <div className="px-20 space-y-40">
       <div className="grid grid-cols-3 gap-4">
         <div>
           <h2 className="text-5xl font-bold leading-tight tracking-tight">
@@ -31,6 +32,30 @@ export default function HomePage() {
             commentCount={12}
             viewCount={12}
             upvoteCount={120}
+          />
+        ))}
+      </div>
+      <div className="grid grid-cols-3 gap-4">
+        <div>
+          <h2 className="text-5xl font-bold leading-tight tracking-tight">
+            Latest Discussions
+          </h2>
+          <p className="text-xl font-light text-foreground">
+            The latest discussions from our community.
+          </p>
+          <Button variant="link" asChild className="text-lg p-0">
+            <Link to="/community">Explore all discussions &rarr;</Link>
+          </Button>
+        </div>
+        {Array.from({ length: 11 }).map((_, index) => (
+          <PostCard
+            key={`postId-${index}`}
+            id={`postId-${index}`}
+            title="What is the best productivity tool?"
+            author="Nico"
+            authorAvatarUrl="https://github.com/apple.png"
+            category="Productivity"
+            postedAt="12 hours ago"
           />
         ))}
       </div>
