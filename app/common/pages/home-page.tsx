@@ -3,6 +3,7 @@ import { ProductCard } from '~/features/products/components/product-card';
 import { IdeaCard } from '~/features/ideas/components/idea-card';
 import { PostCard } from '~/features/community/components/post-card';
 import { JobCard } from '~/features/jobs/components/job-card';
+import { TeamCard } from '~/features/teams/components/team-card';
 import { Button } from '../components/ui/button';
 
 export const meta: MetaFunction = () => {
@@ -106,6 +107,28 @@ export default function HomePage() {
             jobTypes={['Full-time', 'Remote']}
             salary="$100,000 - $120,000"
             positionLocation="Remote"
+          />
+        ))}
+      </div>
+      <div className="grid grid-cols-4 gap-4">
+        <div>
+          <h2 className="text-5xl font-bold leading-tight tracking-tight">
+            Find a team mate
+          </h2>
+          <p className="text-xl font-light text-foreground">
+            Join a team looking for a new member.
+          </p>
+          <Button variant="link" className="p-0 text-lg" asChild>
+            <Link to="/teams">Explore all teams &rarr;</Link>
+          </Button>
+        </div>
+        {Array.from({ length: 7 }).map((_, index) => (
+          <TeamCard
+            id="teamId"
+            username="nico"
+            userAvatarUrl="https://github.com/apple.png"
+            positions={['React Developer', 'Backend Developer']}
+            projectDescription="a new social media platform"
           />
         ))}
       </div>
